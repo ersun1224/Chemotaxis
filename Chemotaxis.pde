@@ -4,23 +4,24 @@ Bacteria [] colony;
 void setup()   
  {     
  	size(800,800);
- 	frameRate(5);
- 	colony = new Bacteria[3];
+ 	frameRate(10);
+ 	colony = new Bacteria[5];
+ 	for (int i = 0; i < colony.length; i++) {
+ 		colony[i] = new Bacteria();
+ 	}
 }   
 void draw()   
  {    
- 	background(155);
+ 	background(0);
  	for (int i = 0; i < colony.length; i++) {
- 		colony[i] = new Bacteria();
  		colony[i].move();
  		colony[i].show();
  	}
- 	//for (int i = 0; i < colony.length; i++) {
- 	//	colony[i].move();
- 	//	colony[i].show();
- 	//}
 
-}  
+} 
+void mouseClicked() {
+	colony.myColor = color((int)(Math.random()*255),(int)(Math.random()*255),(int)(Math.random()*255));
+}
 class Bacteria    
  {     
  	int myX, myY, myColor;
@@ -32,8 +33,18 @@ class Bacteria
  	}
 
  	void move() {
- 		myX = myX + (int)(Math.random()*59) -20;
- 		myY = myY + (int)(Math.random()*59) -20;
+ 		if(mouseX < myX) {
+ 			myX = myX + (int)(Math.random()*19) -15;
+ 		} else {
+ 			myX = myX + (int)(Math.random()*19) -5;
+ 		}
+ 		if(mouseY < myY) {
+ 			myY = myY + (int)(Math.random()*19) -15;
+ 		} else {
+ 			myY = myY + (int)(Math.random()*19) -5;
+ 		}
+
+
  	}
 
  	void show() {
