@@ -1,14 +1,15 @@
- //declare bacteria variables here   
 Bacteria [] colony;
+
 
 void setup()   
  {     
  	size(800,800);
- 	frameRate(10);
- 	colony = new Bacteria[5];
+ 	frameRate(45);
+ 	colony = new Bacteria[50];
  	for (int i = 0; i < colony.length; i++) {
  		colony[i] = new Bacteria();
  	}
+ 	stroke(.05);
 }   
 void draw()   
  {    
@@ -20,7 +21,13 @@ void draw()
 
 } 
 void mouseClicked() {
-	colony.myColor = color((int)(Math.random()*255),(int)(Math.random()*255),(int)(Math.random()*255));
+	
+	for (int i = 0; i < colony.length; i++) {
+		colony[i].myColor = color((int)(Math.random()*255),(int)(Math.random()*255),(int)(Math.random()*255),200);
+		colony[i].myX = (int)(Math.random()*800);
+		colony[i].myY = (int)(Math.random()*800);
+	}
+
 }
 class Bacteria    
  {     
@@ -29,7 +36,7 @@ class Bacteria
  	Bacteria() {
  		myX = 400;
  		myY = 400;
- 		myColor = color((int)(Math.random()*255),(int)(Math.random()*255),(int)(Math.random()*255));
+ 		myColor = color((int)(Math.random()*255),(int)(Math.random()*255),(int)(Math.random()*255),200);
  	}
 
  	void move() {
